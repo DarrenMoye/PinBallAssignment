@@ -9,11 +9,13 @@ public class BallLauncher : MonoBehaviour
     [SerializeField]
     private Flipper1Controller _flipper1Controller;
 
+    [SerializeField]
+    private LeftFlipper _LeftFlipperController;
     
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == _flipper1Controller.gameObject)
+        if (collision.gameObject == _flipper1Controller.gameObject || collision.gameObject == _LeftFlipperController.gameObject)
         {
             _flipper1Controller.touchingBall = true;
         }
@@ -21,7 +23,7 @@ public class BallLauncher : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject == _flipper1Controller.gameObject)
+        if (collision.gameObject == _flipper1Controller.gameObject || collision.gameObject == _LeftFlipperController.gameObject)
         {
             _flipper1Controller.touchingBall = false;
         }
