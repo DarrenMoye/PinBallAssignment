@@ -19,25 +19,21 @@ public class LeftFlipper : MonoBehaviour
         set { Force = value; }
     }
 
-    public float LeftTouchingBall
+    private bool LeftTouchingball = false;
+    public bool LeftTouchingBall
     {
-        get { return _flipper1Controller.touchingBall; }
-        set { _flipper1Controller.touchingBall = value; }
+        get { return LeftTouchingball; }
+        set { LeftTouchingball = value; }
     }
-        
-    //void Start()
-    //{
-    //    RB = GetComponet<Rigidbody>(GO_Ball);
-    //}
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (LeftTouchingBall)
+            if (LeftTouchingball)
             {
                 GO_Ball.GetComponent<Rigidbody>().velocity += new Vector3(0f, 0f, 0f);
-                GO_Ball.GetComponent<Rigidbody>().AddForce(0f, force, 0f, ForceMode.Impulse);
+                GO_Ball.GetComponent<Rigidbody>().AddForce(1f, force, 0f, ForceMode.Impulse);
             }
 
             for (int i = 0; i < 50; i++)
